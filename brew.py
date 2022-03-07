@@ -1,19 +1,20 @@
 class Brew:
 
-    latest_brew_number = 0
+    last_brew_number = 0
 
-    def __init__(self, brewhouse, product_type):
+    def __init__(self, product_type):
         self.product_type = product_type
-        self.brew_number = None
+        self.number = None
         self.assign_brew_number()
-        self.of_brewhouse = brewhouse
-        brewhouse.add_brew(self)
-
-        self.cereal_cooker_data = []
+        self.of_brewhouse = None
+        self.current_vessel = None
 
     def assign_brew_number(self):
-        self.brew_number = Brew.latest_brew_number + 1
-        Brew.latest_brew_number = Brew.latest_brew_number + 1
+        self.number = Brew.last_brew_number + 1
+        Brew.last_brew_number = Brew.last_brew_number + 1
+
+    def assign_brewhouse(self, brewhouse):
+        self.of_brewhouse = brewhouse
 
     def __str__(self):
-        return f'Brew Number {self.brew_number}'
+        return f'Brew Number {self.number}'
